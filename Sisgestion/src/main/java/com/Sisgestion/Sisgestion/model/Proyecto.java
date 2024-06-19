@@ -19,14 +19,14 @@ import java.time.LocalDate;
 @Table(name = "proyecto", schema = "schconfiguracion")
 public class Proyecto {
     @Id
+    @NotNull
+    @Column(name = "proyecto_pk", nullable = false)
+    private Integer proyectoPk;
+
     @Size(max = 255)
     @NotNull
     @Column(name = "x_nombre_proyecto", nullable = false)
     private String xNombreProyecto;
-
-    @NotNull
-    @Column(name = "proyecto_pk", nullable = false)
-    private Integer proyectoPk;
 
     @Size(max = 255)
     @NotNull
