@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JpaBuddyIdeaProjectConfig">
+    <option name="defaultUnitInitialized" value="true" />
     <option name="reLastEntityCreationPackage" value="Sisgestion/src/main/java/com/Sisgestion/Sisgestion/model" />
     <option name="renamerInitialized" value="true" />
     <option name="reverseEngineeringLastDbConnectionId" value="2d01c788-5b95-4f5e-8e4a-a9a82faeef09" />

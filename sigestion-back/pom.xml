@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.0</version>
+		<version>3.3.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Sisgestion</groupId>
-	<artifactId>Sisgestion</artifactId>
+	<groupId>com.sisgestion-back</groupId>
+	<artifactId>sigestion-back</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Sisgestion</name>
-	<description>proyecto sisgestion</description>
+	<name>sigestion-back</name>
+	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
