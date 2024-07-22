@@ -14,7 +14,7 @@ public class ProyectoRequestDTO {
 
     private String xslug;
 
-    private String xprobleamtica;
+    private String xproblematica;
 
     private String xresumen;
 

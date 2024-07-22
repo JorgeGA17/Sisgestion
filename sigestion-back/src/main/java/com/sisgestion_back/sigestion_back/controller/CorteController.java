@@ -26,8 +26,7 @@ public class CorteController {
     public ResponseEntity<List<CorteResponseDTO>> getAllCortes() {
         List<CorteResponseDTO> cortes = corteService.getAllCortes();
         return new ResponseEntity<>(cortes, HttpStatus.OK);
-
-    }
+   }
 
     @GetMapping("/{cortePk}")
     public ResponseEntity<CorteResponseDTO> getCorteById(@PathVariable Long cortePk) {

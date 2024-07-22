@@ -1,5 +1,6 @@
 package com.sisgestion_back.sigestion_back.model.entity;
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,18 +13,15 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "corte", schema = "schconfiguracion")
+@Table(name = "estado_proyectos", schema = "schconfiguracion")
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Corte {
+public class Estado {
 
     @Id
-    @Column(name = "corte_pk", nullable = false)
-    private Long cortePk;
-
-    @Column(name = "c_codigo")
-    private BigDecimal cCodigo;
+    @Column(name = "estado_proyecto_pk", nullable = false)
+    private Long estadoPk;
 
     @Column(name = "x_nombre")
     private String xNombre;
@@ -31,11 +29,8 @@ public class Corte {
     @Column(name = "x_slug")
     private String xSlug;
 
-    @Column(name = "x_nombre_corto")
-    private String xNombreCorto;
-
-    @Column(name = "n_estado")
-    private String nEstado;
+    @Column(name ="x_resumen")
+    private String xResumen;
 
     @Column(name = "f_fecha_registro")
     private Instant fFechaRegistro;
@@ -43,9 +38,8 @@ public class Corte {
     @Column(name = "f_fecha_modificacion")
     private Instant fFechaModificacion;
 
-  @OneToMany (mappedBy = "cortefk", cascade = CascadeType.ALL)
-  @JsonBackReference
-  private List<Proyecto> proyectos;
-
+    @OneToMany(mappedBy = "estadofk", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Proyecto> proyectos;
 
 }

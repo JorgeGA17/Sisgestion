@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
@@ -13,24 +12,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class CorteResponseDTO {
 
-    private Long cortePk;
-
-    private BigDecimal cCodigo;
-
+public class EstadoResponseDTO {
+    private Long estadoPk;
     private String xNombre;
-
     private String xSlug;
-
-    private String xNombreCorto;
-
-    private String nEstado;
-
+    private String xResumen;
     private Instant fFechaRegistro;
-
     private Instant fFechaModificacion;
-
     private List<Proyecto> proyectos;
+
 
 }

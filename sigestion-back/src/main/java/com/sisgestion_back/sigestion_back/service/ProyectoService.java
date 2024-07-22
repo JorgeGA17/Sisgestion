@@ -2,9 +2,11 @@ package com.sisgestion_back.sigestion_back.service;
 
 
 import com.sisgestion_back.sigestion_back.mapper.ProyectoMapper;
-import com.sisgestion_back.sigestion_back.model.dto.ProyectoRequestDTO;
-import com.sisgestion_back.sigestion_back.model.dto.ProyectoResponseDTO;
+import com.sisgestion_back.sigestion_back.model.dto.*;
+import com.sisgestion_back.sigestion_back.model.entity.Corte;
+import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
 import com.sisgestion_back.sigestion_back.model.entity.Proyecto;
+import com.sisgestion_back.sigestion_back.repository.EspecialidadRepository;
 import com.sisgestion_back.sigestion_back.repository.ProyectoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.List;
 
 public class ProyectoService {
 
+    private final EspecialidadRepository especialidadRepository;
     private ProyectoRepository proyectoRepository;
     private ProyectoMapper proyectoMapper;
 
@@ -33,8 +36,9 @@ public class ProyectoService {
         return proyectoMapper.convertToDTO(proyecto);
     }
 
+
     @Transactional
-    public ProyectoResponseDTO createProyecto(ProyectoRequestDTO proyectoRequestDTO) {
+    public ProyectoResponseDTO createProyecto (ProyectoRequestDTO proyectoRequestDTO) {
         Proyecto proyecto = proyectoMapper.convertToEntity(proyectoRequestDTO);
         proyectoRepository.save(proyecto);
         return proyectoMapper.convertToDTO(proyecto);
@@ -46,7 +50,7 @@ public class ProyectoService {
                 .orElseThrow(()-> new RuntimeException("Proyecto no encontrado"+proyectopk));
         proyecto.setXnombreproyecto(proyectoRequestDTO.getXnombreproyecto());
         proyecto.setXslug(proyectoRequestDTO.getXslug());
-        proyecto.setXprobleamtica(proyectoRequestDTO.getXprobleamtica());
+        proyecto.setXproblematica(proyectoRequestDTO.getXproblematica());
         proyecto.setXresumen(proyectoRequestDTO.getXresumen());
         proyecto.setXobjetivogeneral(proyectoRequestDTO.getXobjetivogeneral());
         proyecto.setXinnovacion(proyectoRequestDTO.getXinnovacion());
@@ -64,6 +68,8 @@ public class ProyectoService {
     @Transactional
     public void deleteProyecto(Long proyectopk) {
         proyectoRepository.deleteById(proyectopk);}
+
+
 
 
 }

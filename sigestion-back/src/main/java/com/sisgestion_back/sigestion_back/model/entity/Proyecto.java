@@ -1,9 +1,12 @@
 package com.sisgestion_back.sigestion_back.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -15,31 +18,31 @@ public class Proyecto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @Column(name = "proyecto_pk", nullable = false)
     private Long proyectopk;
 
-    @Column(name ="x_nombre_proyecto", nullable = false)
+    @Column(name ="x_nombre_proyecto")
     private String xnombreproyecto;
 
-    @Column(name ="x_slug", nullable = false)
+    @Column(name ="x_slug")
     private String xslug;
 
-    @Column(name ="x_problematica", nullable = false)
-    private String xprobleamtica;
+    @Column(name ="x_problematica")
+    private String xproblematica;
 
-    @Column(name ="x_resumen", nullable = false)
+    @Column(name ="x_resumen")
     private String xresumen;
 
-    @Column(name ="x_objetivo_general", nullable = false)
+    @Column(name ="x_objetivo_general")
     private String xobjetivogeneral;
 
-    @Column(name ="x_innovacion", nullable = false)
+    @Column(name ="x_innovacion")
     private String xinnovacion;
 
-    @Column(name ="x_impacto", nullable = false)
+    @Column(name ="x_impacto")
     private String ximpacto;
 
-    @Column(name ="x_sostenibilidad", nullable = false)
+    @Column(name ="x_sostenibilidad")
     private String xsostenibilidad;
 
     @Column(name ="x_replicabilidad", nullable = false)
@@ -54,6 +57,31 @@ public class Proyecto {
     @Column(name ="f_fecha", nullable = false)
     private String ffecha;
 
+    @ManyToOne
+    @JoinColumn(name = "corte_fk")
+    @JsonBackReference
+    private Corte cortefk;
+
+    @ManyToOne
+    @JoinColumn(name = "estado_proyecto_fk")
+    @JsonBackReference
+    private Estado estadofk;
+
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
+    @JoinTable(
+            name = "especialidad_proyectos",
+            joinColumns = @JoinColumn(
+                    name = "proyecto_fk",
+                    referencedColumnName = "proyecto_pk"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "especialidad_fk",
+                    referencedColumnName = "especialidad_pk"
+            )
+    )
+    private List<Especialidad> especialidades;
 
 }
 
