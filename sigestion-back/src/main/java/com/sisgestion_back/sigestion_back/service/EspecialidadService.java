@@ -54,4 +54,6 @@ public class EspecialidadService {
     @Transactional
     public void deleteEspecialidad(Long especialidadPk) {
         especialidadRepository.deleteById(especialidadPk);}
+
+
 }

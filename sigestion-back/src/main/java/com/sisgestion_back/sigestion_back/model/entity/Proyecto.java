@@ -1,12 +1,15 @@
 package com.sisgestion_back.sigestion_back.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -14,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Proyecto {
+public class Proyecto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,20 +71,15 @@ public class Proyecto {
     private Estado estadofk;
 
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @ManyToMany ( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "especialidad_proyectos",
-            joinColumns = @JoinColumn(
-                    name = "proyecto_fk",
-                    referencedColumnName = "proyecto_pk"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "especialidad_fk",
-                    referencedColumnName = "especialidad_pk"
-            )
+            name = "especialidad_proyectos",schema = "schconfiguracion",
+            joinColumns = @JoinColumn(name = "projecto_fk"),
+            inverseJoinColumns = @JoinColumn(name = "especialidad_fk")
     )
-    private List<Especialidad> especialidades;
+
+    private Set<Especialidad> especialidades = new HashSet<>();
+
 
 }
 

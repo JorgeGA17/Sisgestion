@@ -1,12 +1,15 @@
 package com.sisgestion_back.sigestion_back.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.Instant;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -14,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Especialidad {
+public class Especialidad implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +33,11 @@ public class Especialidad {
     @Column(name = "f_fecha_modificacion")
     private Instant fFechaModificacion;
 
-    @ManyToMany(mappedBy = "especialidades")
-    private List<Proyecto> proyectos;
+    @ManyToMany(mappedBy = "especialidades", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Proyecto> proyectos = new HashSet<>();
+
 
 }
+
+

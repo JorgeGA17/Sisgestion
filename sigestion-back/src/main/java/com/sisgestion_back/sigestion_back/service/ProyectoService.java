@@ -3,23 +3,24 @@ package com.sisgestion_back.sigestion_back.service;
 
 import com.sisgestion_back.sigestion_back.mapper.ProyectoMapper;
 import com.sisgestion_back.sigestion_back.model.dto.*;
-import com.sisgestion_back.sigestion_back.model.entity.Corte;
 import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
 import com.sisgestion_back.sigestion_back.model.entity.Proyecto;
 import com.sisgestion_back.sigestion_back.repository.EspecialidadRepository;
 import com.sisgestion_back.sigestion_back.repository.ProyectoRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
 
 public class ProyectoService {
 
-    private final EspecialidadRepository especialidadRepository;
+    @Autowired
     private ProyectoRepository proyectoRepository;
     private ProyectoMapper proyectoMapper;
 
@@ -68,7 +69,6 @@ public class ProyectoService {
     @Transactional
     public void deleteProyecto(Long proyectopk) {
         proyectoRepository.deleteById(proyectopk);}
-
 
 
 

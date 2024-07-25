@@ -1,11 +1,7 @@
 package com.sisgestion_back.sigestion_back.controller;
 
-import com.sisgestion_back.sigestion_back.model.dto.EspecialidadResponseDTO;
 import com.sisgestion_back.sigestion_back.model.dto.ProyectoRequestDTO;
 import com.sisgestion_back.sigestion_back.model.dto.ProyectoResponseDTO;
-import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
-import com.sisgestion_back.sigestion_back.model.entity.Proyecto;
-import com.sisgestion_back.sigestion_back.repository.ProyectoRepository;
 import com.sisgestion_back.sigestion_back.service.ProyectoService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -13,10 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/Proyectos")
@@ -26,7 +20,7 @@ import java.util.stream.Collectors;
 public class ProyectoController {
 
     private final ProyectoService proyectoService;
-    private final ProyectoRepository proyectoRepository;
+
 
     @GetMapping
     public ResponseEntity<List<ProyectoResponseDTO>> getAllProyectos() {
@@ -34,12 +28,12 @@ public class ProyectoController {
         return new ResponseEntity<>(proyectos, HttpStatus.OK);
      }
 
+
     @GetMapping("/{proyectopk}")
     public ResponseEntity<ProyectoResponseDTO> getProyectoById(@PathVariable Long proyectopk) {
         ProyectoResponseDTO proyecto= proyectoService.getProyectoById(proyectopk);
         return new ResponseEntity<>(proyecto, HttpStatus.OK);
     }
-
 
     @PostMapping
     public ResponseEntity<ProyectoResponseDTO> createProyecto(@Validated @RequestBody ProyectoRequestDTO proyectoDTO) {
@@ -58,6 +52,8 @@ public class ProyectoController {
         proyectoService.deleteProyecto(proyectopk);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
 
 
 

@@ -1,6 +1,11 @@
 package com.sisgestion_back.sigestion_back.controller;
+import com.sisgestion_back.sigestion_back.exception.ResourceNotFoundException;
 import com.sisgestion_back.sigestion_back.model.dto.EspecialidadRequestDTO;
 import com.sisgestion_back.sigestion_back.model.dto.EspecialidadResponseDTO;
+import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
+import com.sisgestion_back.sigestion_back.model.entity.Proyecto;
+import com.sisgestion_back.sigestion_back.repository.EspecialidadRepository;
+import com.sisgestion_back.sigestion_back.repository.ProyectoRepository;
 import com.sisgestion_back.sigestion_back.service.EspecialidadService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -17,6 +22,7 @@ import java.util.List;
 @CrossOrigin(originPatterns = "http://localhost:4200/")
 
 public class EspecialidadController {
+
     private final EspecialidadService especialidadService;
 
     @GetMapping

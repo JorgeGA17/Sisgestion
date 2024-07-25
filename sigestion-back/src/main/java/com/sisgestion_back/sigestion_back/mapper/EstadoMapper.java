@@ -1,10 +1,7 @@
 package com.sisgestion_back.sigestion_back.mapper;
 
-import com.sisgestion_back.sigestion_back.model.dto.CorteRequestDTO;
-import com.sisgestion_back.sigestion_back.model.dto.CorteResponseDTO;
 import com.sisgestion_back.sigestion_back.model.dto.EstadoRequestDTO;
 import com.sisgestion_back.sigestion_back.model.dto.EstadoResponseDTO;
-import com.sisgestion_back.sigestion_back.model.entity.Corte;
 import com.sisgestion_back.sigestion_back.model.entity.Estado;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;

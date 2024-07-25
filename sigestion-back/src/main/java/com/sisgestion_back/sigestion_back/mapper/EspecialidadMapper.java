@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Component
 public class EspecialidadMapper {
+
     private final ModelMapper modelMapper;
 
     public Especialidad convertToEntity(EspecialidadRequestDTO especialidadRequestDTO) {
