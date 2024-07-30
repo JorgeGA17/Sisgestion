@@ -34,9 +34,10 @@ public class ProyectoService {
     public ProyectoResponseDTO getProyectoById(Long proyectopk) {
         Proyecto proyecto = proyectoRepository.findById(proyectopk)
                 .orElseThrow(()-> new RuntimeException("Proyecto no encontrado"+proyectopk));
+        System.out.println("Especialidades: " + proyecto.getEspecialidades()); // Agrega esta línea
+        proyecto.getEspecialidades().size(); // Agrega esta línea
         return proyectoMapper.convertToDTO(proyecto);
     }
-
 
     @Transactional
     public ProyectoResponseDTO createProyecto (ProyectoRequestDTO proyectoRequestDTO) {
@@ -69,7 +70,5 @@ public class ProyectoService {
     @Transactional
     public void deleteProyecto(Long proyectopk) {
         proyectoRepository.deleteById(proyectopk);}
-
-
 
 }

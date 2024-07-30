@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ProyectoRepository extends JpaRepository<Proyecto, Serializable> {
-
-
+public interface ProyectoRepository extends JpaRepository<Proyecto,Long> {
     Optional<Proyecto> findByxnombreproyecto(String xnombreproyecto);
 
 }

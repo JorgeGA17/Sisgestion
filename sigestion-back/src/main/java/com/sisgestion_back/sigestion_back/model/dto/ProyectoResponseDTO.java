@@ -3,12 +3,12 @@ package com.sisgestion_back.sigestion_back.model.dto;
 
 import com.sisgestion_back.sigestion_back.model.entity.Corte;
 import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
-import com.sisgestion_back.sigestion_back.model.entity.Estado;
-import com.sisgestion_back.sigestion_back.model.entity.Proyecto;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -47,6 +47,7 @@ public class ProyectoResponseDTO {
 
     private Corte cortefk;
 
-    private Especialidad especialidades;
+    private Set<Especialidad> especialidades = new HashSet<>();
+
 
 }

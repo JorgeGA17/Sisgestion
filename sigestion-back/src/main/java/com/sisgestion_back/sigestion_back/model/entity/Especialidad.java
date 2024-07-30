@@ -33,11 +33,9 @@ public class Especialidad implements Serializable {
     @Column(name = "f_fecha_modificacion")
     private Instant fFechaModificacion;
 
-    @ManyToMany(mappedBy = "especialidades", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "especialidades", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Proyecto> proyectos = new HashSet<>();
-
-
 }
 
 

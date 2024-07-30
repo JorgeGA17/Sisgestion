@@ -71,7 +71,7 @@ public class Proyecto implements Serializable {
     private Estado estadofk;
 
 
-    @ManyToMany ( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany ( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "especialidad_proyectos",schema = "schconfiguracion",
             joinColumns = @JoinColumn(name = "projecto_fk"),
@@ -79,7 +79,5 @@ public class Proyecto implements Serializable {
     )
 
     private Set<Especialidad> especialidades = new HashSet<>();
-
-
 }
 
