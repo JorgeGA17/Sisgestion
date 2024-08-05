@@ -4,6 +4,7 @@ package com.sisgestion_back.sigestion_back.model.dto;
 import com.sisgestion_back.sigestion_back.model.entity.Corte;
 import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
 
+import com.sisgestion_back.sigestion_back.model.entity.Estado;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,6 +47,8 @@ public class ProyectoResponseDTO {
     private String ffecha;
 
     private Corte cortefk;
+
+    private Estado estadofk;
 
     private Set<Especialidad> especialidades = new HashSet<>();
 

@@ -4,10 +4,12 @@ package com.sisgestion_back.sigestion_back.service;
 import com.sisgestion_back.sigestion_back.mapper.ProyectoMapper;
 import com.sisgestion_back.sigestion_back.model.dto.*;
 import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
+import com.sisgestion_back.sigestion_back.model.entity.Estado;
 import com.sisgestion_back.sigestion_back.model.entity.Proyecto;
 import com.sisgestion_back.sigestion_back.repository.EspecialidadRepository;
 import com.sisgestion_back.sigestion_back.repository.ProyectoRepository;
 import lombok.AllArgsConstructor;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,6 @@ public class ProyectoService {
     public ProyectoResponseDTO getProyectoById(Long proyectopk) {
         Proyecto proyecto = proyectoRepository.findById(proyectopk)
                 .orElseThrow(()-> new RuntimeException("Proyecto no encontrado"+proyectopk));
-        System.out.println("Especialidades: " + proyecto.getEspecialidades()); // Agrega esta línea
-        proyecto.getEspecialidades().size(); // Agrega esta línea
         return proyectoMapper.convertToDTO(proyecto);
     }
 

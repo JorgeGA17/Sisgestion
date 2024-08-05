@@ -1,6 +1,7 @@
 package com.sisgestion_back.sigestion_back.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,8 +34,8 @@ public class Especialidad implements Serializable {
     @Column(name = "f_fecha_modificacion")
     private Instant fFechaModificacion;
 
-    @ManyToMany(mappedBy = "especialidades", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
+    @ManyToMany(mappedBy = "especialidades",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Set<Proyecto> proyectos = new HashSet<>();
 }
 
