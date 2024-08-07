@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -17,5 +19,5 @@ public class EspecialidadResponseDTO {
     private String xNombre;
     private Instant fFechaRegistro;
     private Instant fFechaModificacion;
-    private List<Proyecto> proyectos;
+    private Set<ProyectoResponseDTO> proyectos; // Incluir proyectos
 }

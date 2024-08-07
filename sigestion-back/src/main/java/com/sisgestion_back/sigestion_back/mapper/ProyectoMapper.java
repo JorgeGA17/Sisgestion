@@ -1,10 +1,14 @@
 package com.sisgestion_back.sigestion_back.mapper;
 
 import com.sisgestion_back.sigestion_back.model.dto.*;
+import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
 import com.sisgestion_back.sigestion_back.model.entity.Proyecto;
+import com.sisgestion_back.sigestion_back.repository.CorteRepository;
+import com.sisgestion_back.sigestion_back.repository.EstadoRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -20,8 +24,7 @@ public class ProyectoMapper {
 
     @PostConstruct
     public void init() {
-        modelMapper.typeMap(Proyecto.class, ProyectoResponseDTO.class)
-                .addMappings(mapper -> mapper.skip(ProyectoResponseDTO::setEspecialidades));
+
     }
 
     public Proyecto convertToEntity(ProyectoRequestDTO proyectoRequestDTO) {
@@ -29,9 +32,7 @@ public class ProyectoMapper {
     }
 
     public ProyectoResponseDTO convertToDTO(Proyecto proyecto) {
-        ProyectoResponseDTO dto = modelMapper.map(proyecto, ProyectoResponseDTO.class);
-        dto.setEspecialidades(new HashSet<>(proyecto.getEspecialidades())); // Incluye las especialidades en la respuesta
-        return dto;
+        return modelMapper.map(proyecto, ProyectoResponseDTO.class);
     }
 
     public List<ProyectoResponseDTO> convertToDTO(List<Proyecto> proyectos) {

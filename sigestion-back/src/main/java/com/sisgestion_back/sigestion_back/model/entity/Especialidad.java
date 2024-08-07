@@ -1,5 +1,6 @@
 package com.sisgestion_back.sigestion_back.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -18,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Especialidad implements Serializable {
+public class Especialidad{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,9 +35,12 @@ public class Especialidad implements Serializable {
     @Column(name = "f_fecha_modificacion")
     private Instant fFechaModificacion;
 
-    @ManyToMany(mappedBy = "especialidades",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "especialidad_proyectos",schema = "schconfiguracion",
+            joinColumns = @JoinColumn(name = "especialidad_fk"),
+            inverseJoinColumns = @JoinColumn(name = "projecto_fk")
+    )
+
     private Set<Proyecto> proyectos = new HashSet<>();
 }
-
-

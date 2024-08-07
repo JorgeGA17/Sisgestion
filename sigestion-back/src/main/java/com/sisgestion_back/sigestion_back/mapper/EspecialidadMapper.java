@@ -6,6 +6,7 @@ import com.sisgestion_back.sigestion_back.model.dto.EspecialidadRequestDTO;
 import com.sisgestion_back.sigestion_back.model.dto.EspecialidadResponseDTO;
 import com.sisgestion_back.sigestion_back.model.entity.Corte;
 import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
+import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,13 @@ import java.util.List;
 @Component
 public class EspecialidadMapper {
 
+
     private final ModelMapper modelMapper;
+
+    @PostConstruct
+    public void init() {
+
+    }
 
     public Especialidad convertToEntity(EspecialidadRequestDTO especialidadRequestDTO) {
         return modelMapper.map(especialidadRequestDTO, Especialidad.class);

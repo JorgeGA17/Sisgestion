@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,7 +49,5 @@ public class ProyectoResponseDTO {
 
     private Estado estadofk;
 
-    private Set<Especialidad> especialidades = new HashSet<>();
-
-
+    private Set<EspecialidadResponseDTO> especialidades; // Incluir especialidades
 }

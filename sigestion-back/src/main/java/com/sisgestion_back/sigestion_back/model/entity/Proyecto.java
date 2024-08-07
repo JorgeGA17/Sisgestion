@@ -71,13 +71,14 @@ public class Proyecto implements Serializable {
     private Estado estadofk;
 
 
-    @ManyToMany ( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonBackReference
     @JoinTable(
             name = "especialidad_proyectos",schema = "schconfiguracion",
             joinColumns = @JoinColumn(name = "projecto_fk"),
             inverseJoinColumns = @JoinColumn(name = "especialidad_fk")
     )
-
     private Set<Especialidad> especialidades = new HashSet<>();
 }
+
 

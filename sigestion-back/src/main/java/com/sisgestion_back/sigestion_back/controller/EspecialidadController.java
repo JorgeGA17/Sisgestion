@@ -2,6 +2,8 @@ package com.sisgestion_back.sigestion_back.controller;
 import com.sisgestion_back.sigestion_back.exception.ResourceNotFoundException;
 import com.sisgestion_back.sigestion_back.model.dto.EspecialidadRequestDTO;
 import com.sisgestion_back.sigestion_back.model.dto.EspecialidadResponseDTO;
+import com.sisgestion_back.sigestion_back.model.dto.ProyectoRequestDTO;
+import com.sisgestion_back.sigestion_back.model.dto.ProyectoResponseDTO;
 import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
 import com.sisgestion_back.sigestion_back.model.entity.Proyecto;
 import com.sisgestion_back.sigestion_back.repository.EspecialidadRepository;
@@ -9,12 +11,15 @@ import com.sisgestion_back.sigestion_back.repository.ProyectoRepository;
 import com.sisgestion_back.sigestion_back.service.EspecialidadService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/Especialidades")
@@ -58,3 +63,4 @@ public class EspecialidadController {
 
 
 }
+
