@@ -24,7 +24,13 @@ public class ProyectoMapper {
 
     @PostConstruct
     public void init() {
-
+        modelMapper.typeMap(Proyecto.class, ProyectoResponseDTO.class)
+                .addMappings(mapper -> {
+                    mapper.map(Proyecto::getEspecialidades, ProyectoResponseDTO::setEspecialidades);
+                    mapper.map(Proyecto::getJerarquias, ProyectoResponseDTO::setJerarquias);
+                    mapper.map(Proyecto::getEjes, ProyectoResponseDTO::setEjes);
+                    mapper.map(Proyecto::getEtiquetas, ProyectoResponseDTO::setEtiquetas);
+                });
     }
 
     public Proyecto convertToEntity(ProyectoRequestDTO proyectoRequestDTO) {

@@ -6,17 +6,17 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
+
 
 @Data
 @Entity
 @Table(name = "proyecto", schema = "schconfiguracion")
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Proyecto implements Serializable {
 
     @Id
@@ -24,40 +24,40 @@ public class Proyecto implements Serializable {
     @Column(name = "proyecto_pk", nullable = false)
     private Long proyectopk;
 
-    @Column(name ="x_nombre_proyecto")
+    @Column(name = "x_nombre_proyecto")
     private String xnombreproyecto;
 
-    @Column(name ="x_slug")
+    @Column(name = "x_slug")
     private String xslug;
 
-    @Column(name ="x_problematica")
+    @Column(name = "x_problematica")
     private String xproblematica;
 
-    @Column(name ="x_resumen")
+    @Column(name = "x_resumen")
     private String xresumen;
 
-    @Column(name ="x_objetivo_general")
+    @Column(name = "x_objetivo_general")
     private String xobjetivogeneral;
 
-    @Column(name ="x_innovacion")
+    @Column(name = "x_innovacion")
     private String xinnovacion;
 
-    @Column(name ="x_impacto")
+    @Column(name = "x_impacto")
     private String ximpacto;
 
-    @Column(name ="x_sostenibilidad")
+    @Column(name = "x_sostenibilidad")
     private String xsostenibilidad;
 
-    @Column(name ="x_replicabilidad", nullable = false)
+    @Column(name = "x_replicabilidad", nullable = false)
     private String xreplicabilidad;
 
-    @Column(name ="n_publicacion", nullable = false)
+    @Column(name = "n_publicacion", nullable = false)
     private String npublicacion;
 
-    @Column(name ="n_peso", nullable = false)
+    @Column(name = "n_peso", nullable = false)
     private String npeso;
 
-    @Column(name ="f_fecha", nullable = false)
+    @Column(name = "f_fecha", nullable = false)
     private String ffecha;
 
     @ManyToOne
@@ -70,15 +70,43 @@ public class Proyecto implements Serializable {
     @JsonBackReference
     private Estado estadofk;
 
-
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JsonBackReference
     @JoinTable(
-            name = "especialidad_proyectos",schema = "schconfiguracion",
-            joinColumns = @JoinColumn(name = "projecto_fk"),
+            name = "especialidad_proyectos", schema = "schconfiguracion",
+            joinColumns = @JoinColumn(name = "proyecto_fk"),
             inverseJoinColumns = @JoinColumn(name = "especialidad_fk")
     )
     private Set<Especialidad> especialidades = new HashSet<>();
-}
 
+    @ManyToMany
+    @JsonBackReference
+    @JoinTable(
+            name = "jerarquia_proyectos", schema = "schconfiguracion",
+            joinColumns = @JoinColumn(name = "proyecto_fk"),
+            inverseJoinColumns = @JoinColumn(name = "jerarquia_fk")
+    )
+    private Set<Jerarquia> jerarquias = new HashSet<>();
+
+
+    @ManyToMany
+    @JsonBackReference
+    @JoinTable(
+            name = "eje_proyectos", schema = "schconfiguracion",
+            joinColumns = @JoinColumn(name = "proyecto_fk"),
+            inverseJoinColumns = @JoinColumn(name = "eje_fk")
+    )
+    private Set<Eje> ejes = new HashSet<>();
+
+    @ManyToMany
+    @JsonBackReference
+    @JoinTable(
+            name = "etiqueta_proyectos", schema = "schconfiguracion",
+            joinColumns = @JoinColumn(name = "proyecto_fk"),
+            inverseJoinColumns = @JoinColumn(name = "etiqueta_fk")
+    )
+    private Set<Etiqueta> etiquetas = new HashSet<>();
+
+
+}
 

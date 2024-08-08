@@ -49,5 +49,11 @@ public class ProyectoResponseDTO {
 
     private Estado estadofk;
 
-    private Set<EspecialidadResponseDTO> especialidades; // Incluir especialidades
+    private Set<EspecialidadResponseDTO> especialidades;
+
+    private Set<JerarquiaResponseDTO> jerarquias;
+
+    private Set<EjeResponseDTO> ejes;
+
+    private Set<EtiquetaResponseDTO> etiquetas;
 }

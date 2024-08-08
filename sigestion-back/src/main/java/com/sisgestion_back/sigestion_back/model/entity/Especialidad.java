@@ -13,34 +13,35 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
-@Entity
-@Table(name = "especialidad", schema = "schconfiguracion")
-@NoArgsConstructor
-@AllArgsConstructor
+    @Data
+    @Entity
+    @Table(name = "especialidad", schema = "schconfiguracion")
+    @NoArgsConstructor
+    @AllArgsConstructor
 
-public class Especialidad{
+    public class Especialidad implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "especialidad_pk", nullable = false)
-    private Long especialidadPk;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "especialidad_pk", nullable = false)
+        private Long especialidadPk;
 
-    @Column(name = "x_nombre")
-    private String xNombre;
+        @Column(name = "x_nombre")
+        private String xNombre;
 
-    @Column(name = "f_fecha_registro")
-    private Instant fFechaRegistro;
+        @Column(name = "f_fecha_registro")
+        private Instant fFechaRegistro;
 
-    @Column(name = "f_fecha_modificacion")
-    private Instant fFechaModificacion;
+        @Column(name = "f_fecha_modificacion")
+        private Instant fFechaModificacion;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "especialidad_proyectos",schema = "schconfiguracion",
-            joinColumns = @JoinColumn(name = "especialidad_fk"),
-            inverseJoinColumns = @JoinColumn(name = "projecto_fk")
-    )
+        @ManyToMany
+        @JsonBackReference
+        @JoinTable(
+                name = "especialidad_proyectos",schema = "schconfiguracion",
+                joinColumns = @JoinColumn(name = "especialidad_fk"),
+                inverseJoinColumns = @JoinColumn(name = "projecto_fk")
+        )
 
-    private Set<Proyecto> proyectos = new HashSet<>();
-}
+        private Set<Proyecto> proyectos = new HashSet<>();
+    }

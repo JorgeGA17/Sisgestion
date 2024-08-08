@@ -20,7 +20,5 @@ public class EstadoResponseDTO {
     private String xResumen;
     private Instant fFechaRegistro;
     private Instant fFechaModificacion;
-    private List<Proyecto> proyectos;
-
 
 }

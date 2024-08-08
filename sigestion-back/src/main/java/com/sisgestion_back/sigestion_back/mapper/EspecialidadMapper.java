@@ -18,26 +18,26 @@ import java.util.List;
 public class EspecialidadMapper {
 
 
-    private final ModelMapper modelMapper;
+        private final ModelMapper modelMapper;
 
-    @PostConstruct
-    public void init() {
+        @PostConstruct
+        public void init() {
 
-    }
+        }
 
-    public Especialidad convertToEntity(EspecialidadRequestDTO especialidadRequestDTO) {
-        return modelMapper.map(especialidadRequestDTO, Especialidad.class);
-    }
+        public Especialidad convertToEntity(EspecialidadRequestDTO especialidadRequestDTO) {
+            return modelMapper.map(especialidadRequestDTO, Especialidad.class);
+        }
 
-    public EspecialidadResponseDTO convertToDTO(Especialidad especialidad) {
-        return modelMapper.map(especialidad, EspecialidadResponseDTO.class);
-    }
+        public EspecialidadResponseDTO convertToDTO(Especialidad especialidad) {
+            return modelMapper.map(especialidad, EspecialidadResponseDTO.class);
+        }
 
-    public List<EspecialidadResponseDTO> convertToDTO(List<Especialidad> especialidades) {
+        public List<EspecialidadResponseDTO> convertToDTO(List<Especialidad> especialidades) {
 
-        return especialidades.stream()
-                .map(this::convertToDTO)
-                .toList();
-    }
+            return especialidades.stream()
+                    .map(this::convertToDTO)
+                    .toList();
+        }
 
 }

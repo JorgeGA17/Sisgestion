@@ -1,25 +1,14 @@
 package com.sisgestion_back.sigestion_back.service;
-
-
 import com.sisgestion_back.sigestion_back.mapper.EspecialidadMapper;
-
 import com.sisgestion_back.sigestion_back.model.dto.EspecialidadRequestDTO;
 import com.sisgestion_back.sigestion_back.model.dto.EspecialidadResponseDTO;
-
-import com.sisgestion_back.sigestion_back.model.dto.ProyectoResponseDTO;
 import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
-
-import com.sisgestion_back.sigestion_back.model.entity.Proyecto;
 import com.sisgestion_back.sigestion_back.repository.EspecialidadRepository;
-import com.sisgestion_back.sigestion_back.repository.ProyectoRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+
 
 @Service
 @AllArgsConstructor
