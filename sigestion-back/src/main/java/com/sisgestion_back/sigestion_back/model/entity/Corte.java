@@ -19,6 +19,7 @@ import java.util.List;
 public class Corte {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "corte_pk", nullable = false)
     private Long cortePk;
 

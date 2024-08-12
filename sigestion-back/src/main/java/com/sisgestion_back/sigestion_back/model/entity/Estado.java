@@ -20,6 +20,7 @@ import java.util.List;
 public class Estado {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "estado_proyecto_pk", nullable = false)
     private Long estadoPk;
 
@@ -41,5 +42,4 @@ public class Estado {
     @OneToMany(mappedBy = "estadofk", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Proyecto> proyectos;
-
 }

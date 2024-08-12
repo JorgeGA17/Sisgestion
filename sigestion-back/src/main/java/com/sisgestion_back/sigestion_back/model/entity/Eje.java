@@ -27,10 +27,10 @@ public class Eje {
     @Column(name = "x_slug")
     private String xSlug;
 
-    @Column(name ="x_resumen")
+    @Column(name = "x_resumen")
     private String xResumen;
 
-    @Column(name ="n_estado")
+    @Column(name = "n_estado")
     private String nEstado;
 
     @Column(name = "f_fecha_registro")
@@ -39,14 +39,5 @@ public class Eje {
     @Column(name = "f_fecha_modificacion")
     private Instant fFechaModificacion;
 
-    @ManyToMany
-    @JsonBackReference
-    @JoinTable(
-            name = "eje_proyectos",schema = "schconfiguracion",
-            joinColumns = @JoinColumn(name = "eje_fk"),
-            inverseJoinColumns = @JoinColumn(name = "proyecto_fk")
-    )
-
-    private Set<Proyecto> proyectos = new HashSet<>();
 
 }

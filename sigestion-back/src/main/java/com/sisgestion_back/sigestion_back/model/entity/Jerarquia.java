@@ -32,15 +32,5 @@ public class Jerarquia implements Serializable  {
     @Column(name = "f_fecha_modificacion")
     private Instant fFechaModificacion;
 
-    @ManyToMany
-    @JsonBackReference
-    @JoinTable(
-            name = "jerarquia_proyectos",schema = "schconfiguracion",
-            joinColumns = @JoinColumn(name = "jerarquia_fk"),
-            inverseJoinColumns = @JoinColumn(name = "proyecto_fk")
-    )
-
-    private Set<Proyecto> proyectos = new HashSet<>();
-
 
 }

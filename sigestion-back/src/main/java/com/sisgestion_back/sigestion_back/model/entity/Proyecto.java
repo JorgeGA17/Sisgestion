@@ -17,7 +17,7 @@ import java.util.Set;
 @Table(name = "proyecto", schema = "schconfiguracion")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Proyecto implements Serializable {
+public class Proyecto{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,16 +48,16 @@ public class Proyecto implements Serializable {
     @Column(name = "x_sostenibilidad")
     private String xsostenibilidad;
 
-    @Column(name = "x_replicabilidad", nullable = false)
+    @Column(name = "x_replicabilidad")
     private String xreplicabilidad;
 
-    @Column(name = "n_publicacion", nullable = false)
+    @Column(name = "n_publicacion")
     private String npublicacion;
 
-    @Column(name = "n_peso", nullable = false)
+    @Column(name = "n_peso")
     private String npeso;
 
-    @Column(name = "f_fecha", nullable = false)
+    @Column(name = "f_fecha")
     private String ffecha;
 
     @ManyToOne
@@ -70,16 +70,16 @@ public class Proyecto implements Serializable {
     @JsonBackReference
     private Estado estadofk;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinTable(
             name = "especialidad_proyectos", schema = "schconfiguracion",
-            joinColumns = @JoinColumn(name = "proyecto_fk"),
+            joinColumns = @JoinColumn(name = "projecto_fk"),
             inverseJoinColumns = @JoinColumn(name = "especialidad_fk")
     )
     private Set<Especialidad> especialidades = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinTable(
             name = "jerarquia_proyectos", schema = "schconfiguracion",
@@ -89,7 +89,7 @@ public class Proyecto implements Serializable {
     private Set<Jerarquia> jerarquias = new HashSet<>();
 
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinTable(
             name = "eje_proyectos", schema = "schconfiguracion",
@@ -98,7 +98,7 @@ public class Proyecto implements Serializable {
     )
     private Set<Eje> ejes = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinTable(
             name = "etiqueta_proyectos", schema = "schconfiguracion",
@@ -106,6 +106,18 @@ public class Proyecto implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "etiqueta_fk")
     )
     private Set<Etiqueta> etiquetas = new HashSet<>();
+
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @JsonBackReference
+    @JoinTable(
+            name = "personal_proyectos", schema = "schconfiguracion",
+            joinColumns = @JoinColumn(name = "proyecto_fk"),
+            inverseJoinColumns = @JoinColumn(name = "personal_fk")
+    )
+    private Set<Personal> personas = new HashSet<>();
+
+
+
 
 
 }

@@ -56,4 +56,6 @@ public class ProyectoResponseDTO {
     private Set<EjeResponseDTO> ejes;
 
     private Set<EtiquetaResponseDTO> etiquetas;
+
+    private Set<PersonalResponseDTO> personas;
 }

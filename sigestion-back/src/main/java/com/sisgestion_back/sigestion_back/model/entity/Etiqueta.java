@@ -40,13 +40,5 @@ public class Etiqueta {
     @Column(name = "f_fecha_modificacion")
     private Instant fFechaModificacion;
 
-    @ManyToMany
-    @JsonBackReference
-    @JoinTable(
-            name = "etiqueta_proyectos",schema = "schconfiguracion",
-            joinColumns = @JoinColumn(name = "etiqueta_fk"),
-            inverseJoinColumns = @JoinColumn(name = "proyecto_fk")
-    )
 
-    private Set<Proyecto> proyectos = new HashSet<>();
 }
