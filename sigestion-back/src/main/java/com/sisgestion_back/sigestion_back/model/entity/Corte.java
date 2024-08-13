@@ -48,5 +48,11 @@ public class Corte {
   @JsonBackReference
   private List<Proyecto> proyectos;
 
+  @OneToMany (mappedBy = "cortefk", cascade = CascadeType.ALL)
+  @JsonBackReference
+  private List<Comision> comisiones;
+
+
+
 
 }

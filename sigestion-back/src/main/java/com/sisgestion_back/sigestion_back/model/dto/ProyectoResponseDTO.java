@@ -2,15 +2,10 @@ package com.sisgestion_back.sigestion_back.model.dto;
 
 
 import com.sisgestion_back.sigestion_back.model.entity.Corte;
-import com.sisgestion_back.sigestion_back.model.entity.Especialidad;
-
 import com.sisgestion_back.sigestion_back.model.entity.Estado;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
