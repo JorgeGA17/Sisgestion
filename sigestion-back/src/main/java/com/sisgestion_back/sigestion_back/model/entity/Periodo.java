@@ -11,18 +11,18 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "comision", schema = "schconfiguracion")
+@Table(name = "periodo", schema = "schconfiguracion")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comision {
+public class Periodo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comision_pk", nullable = false)
-    private Long comisionPk;
+    @Column(name = "periodo_pk", nullable = false)
+    private Long periodoPk;
 
-    @Column(name = "x_descripcion")
-    private String xDescripcion;
+    @Column(name = "x_nombre")
+    private String xNombre;
 
     @Column(name = "n_estado")
     private String nEstado;
@@ -33,18 +33,14 @@ public class Comision {
     @Column(name = "f_fecha_modificacion")
     private Instant fFechaModificacion;
 
-    @ManyToOne
-    @JoinColumn(name = "corte_fk")
+    @OneToMany (mappedBy = "periodofk", cascade = CascadeType.ALL)
     @JsonBackReference
-    private Corte cortefk;
+    private List<Comision> comisiones;
 
-    @ManyToOne
-    @JoinColumn(name = "periodo_fk")
+    @OneToMany (mappedBy = "periodofk", cascade = CascadeType.ALL)
     @JsonBackReference
-    private Periodo periodofk;
+    private List<Presidente> presidentes;
 
-    @OneToMany (mappedBy = "comisionfk", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<Miembro> miembros;
 
 }
+

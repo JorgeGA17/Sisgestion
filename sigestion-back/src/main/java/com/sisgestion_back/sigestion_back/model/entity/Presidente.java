@@ -7,22 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-import java.util.List;
 
 @Data
 @Entity
-@Table(name = "comision", schema = "schconfiguracion")
+@Table(name = "presidente", schema = "schconfiguracion")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comision {
 
+public class Presidente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comision_pk", nullable = false)
-    private Long comisionPk;
-
-    @Column(name = "x_descripcion")
-    private String xDescripcion;
+    @Column(name = "presidente_pk", nullable = false)
+    private Long presidentePk;
 
     @Column(name = "n_estado")
     private String nEstado;
@@ -34,17 +30,22 @@ public class Comision {
     private Instant fFechaModificacion;
 
     @ManyToOne
+    @JoinColumn(name = "periodo_fk")
+    @JsonBackReference
+    private Periodo periodofk;
+
+    @ManyToOne
     @JoinColumn(name = "corte_fk")
     @JsonBackReference
     private Corte cortefk;
 
     @ManyToOne
-    @JoinColumn(name = "periodo_fk")
+    @JoinColumn(name = "personal_fk")
     @JsonBackReference
-    private Periodo periodofk;
+    private Personal personalfk;
 
-    @OneToMany (mappedBy = "comisionfk", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<Miembro> miembros;
+
+
+
 
 }

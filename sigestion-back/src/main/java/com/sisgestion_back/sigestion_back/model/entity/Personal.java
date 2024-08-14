@@ -1,10 +1,13 @@
 package com.sisgestion_back.sigestion_back.model.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -38,5 +41,13 @@ public class Personal {
 
     @Column(name = "x_correo_institucional")
     private String xcorreoInstitucional;
+
+    @OneToMany (mappedBy = "personalfk", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Presidente> presidentes;
+
+    @OneToMany (mappedBy = "personalfk", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Miembro> miembros;
 
 }

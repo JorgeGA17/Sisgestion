@@ -52,6 +52,10 @@ public class Corte {
   @JsonBackReference
   private List<Comision> comisiones;
 
+  @OneToMany (mappedBy = "cortefk", cascade = CascadeType.ALL)
+  @JsonBackReference
+  private List<Presidente> presidentes;
+
 
 
 
