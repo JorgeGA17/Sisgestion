@@ -19,6 +19,7 @@ public class ComisionResponseDTO {
     private String nEstado;
     private Instant fFechaRegistro;
     private Instant fFechaModificacion;
+    private String xResolucion;
     private Corte cortefk;
     private Periodo periodofk;
 }

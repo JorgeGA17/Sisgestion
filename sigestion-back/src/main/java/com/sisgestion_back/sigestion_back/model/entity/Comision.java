@@ -24,6 +24,9 @@ public class Comision {
     @Column(name = "x_descripcion")
     private String xDescripcion;
 
+    @Column(name = "x_resolucion")
+    private String xResolucion;
+
     @Column(name = "n_estado")
     private String nEstado;
 

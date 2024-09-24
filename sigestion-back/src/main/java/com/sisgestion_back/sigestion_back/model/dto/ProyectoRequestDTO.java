@@ -20,17 +20,17 @@ public class ProyectoRequestDTO {
 
     private String xobjetivogeneral;
 
-    private String xinnovacion;
+    private Integer xinnovacion;
 
-    private String ximpacto;
+    private Integer ximpacto;
 
-    private String xsostenibilidad;
+    private Integer xsostenibilidad;
 
-    private String xreplicabilidad;
+    private Integer xreplicabilidad;
 
     private String npublicacion;
 
-    private String npeso;
+    private Integer npeso;
 
     private String ffecha;
 

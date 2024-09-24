@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -40,22 +42,22 @@ public class Proyecto{
     private String xobjetivogeneral;
 
     @Column(name = "x_innovacion")
-    private String xinnovacion;
+    private Integer xinnovacion;
 
     @Column(name = "x_impacto")
-    private String ximpacto;
+    private Integer ximpacto;
 
     @Column(name = "x_sostenibilidad")
-    private String xsostenibilidad;
+    private Integer xsostenibilidad;
 
     @Column(name = "x_replicabilidad")
-    private String xreplicabilidad;
+    private Integer xreplicabilidad;
+
+    @Column(name = "n_peso")
+    private Integer npeso;
 
     @Column(name = "n_publicacion")
     private String npublicacion;
-
-    @Column(name = "n_peso")
-    private String npeso;
 
     @Column(name = "f_fecha")
     private String ffecha;
@@ -74,7 +76,7 @@ public class Proyecto{
     @JsonBackReference
     @JoinTable(
             name = "especialidad_proyectos", schema = "schconfiguracion",
-            joinColumns = @JoinColumn(name = "projecto_fk"),
+            joinColumns = @JoinColumn(name = "proyecto_fk"),
             inverseJoinColumns = @JoinColumn(name = "especialidad_fk")
     )
     private Set<Especialidad> especialidades = new HashSet<>();
